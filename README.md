@@ -4,7 +4,7 @@
 
 Add this repository's index in **Settings** > **Revenge** > **Plugins** > **[+]**:
 
-https://lvwmwm.github.io/liver-plugins/index.json
+https://lvwmwm.github.io/liver-plugins/
 
 ## Plugins
 
