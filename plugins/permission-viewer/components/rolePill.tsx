@@ -13,7 +13,7 @@ import {
 } from '../lib/client'
 import { openSheet, roleKey } from '../lib/navigation'
 import { reportError } from '../lib/report'
-import { openRoleMembers } from '../lib/roleMembers'
+import { openRoleMembers, roleMembersResolutionError } from '../lib/roleMembers'
 import { roleColorText } from '../lib/roles'
 import { RolePermissionsSheet } from './roleScreens'
 import type { ComponentProps, FC } from 'react'
@@ -100,7 +100,7 @@ function pillItems(role: Role, guildId: string | undefined) {
 			action: () => {
 				if (!openRoleMembers(guildId, role.id)) {
 					reportError(
-						`The role member sheet was not available for ${role.id}, try again later.`,
+						`Role members failed for ${role.id}: ${roleMembersResolutionError() || 'role not loaded'}`,
 					)
 				}
 			},
