@@ -8,4 +8,4 @@ https://lvwmwm.github.io/liver-plugins/
 
 ## Plugins
 
-- [Permission Viewer](plugins/permission-viewer) — Inspect the permissions a server, channel, role, or member has. (1.0.0)
+- [Permission Viewer](plugins/permission-viewer) — Inspect the permissions a server, channel, role, or member has. (1.0.4)
