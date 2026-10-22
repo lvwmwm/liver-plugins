@@ -14,6 +14,7 @@ import {
 } from '../lib/navigation'
 import { reportError } from '../lib/report'
 import { RoleListRoute } from '../lib/routes'
+import { getChannel } from '../lib/stores'
 import type { ReactElement } from 'react'
 
 /**
@@ -38,11 +39,18 @@ const childrenOf = (node: any): ReactElement[] | undefined => {
 	return Array.isArray(children) ? children : undefined
 }
 
+/** A section list: every entry is a row group, never a group's own rows. */
+const groupsOf = (node: unknown): ReactElement[] | undefined =>
+	Array.isArray(node) && node.length > 0 && node.every(isRowGroup)
+		? (node as ReactElement[])
+		: undefined
+
 const finders: Finder[] = [
 	tree =>
-		childrenOf(
-			findInReactFiber(tree as ReactElement, node =>
-				isRowGroup((node as ReactElement[])?.[0]),
+		groupsOf(
+			findInReactFiber(
+				tree as ReactElement,
+				node => groupsOf(node) !== undefined,
 			),
 		),
 
@@ -52,21 +60,6 @@ const finders: Finder[] = [
 				tree as ReactElement,
 				node => node?.type?.displayName === 'View',
 			),
-		),
-
-	// Last resort: every entry is an action row.
-	tree =>
-		childrenOf(
-			findInReactFiber(tree as ReactElement, node => {
-				const children = childrenOf(node)
-				return (
-					children !== undefined &&
-					children.length > 0 &&
-					children.every(
-						child => typeof (child as any)?.props?.label === 'string',
-					)
-				)
-			}),
 		),
 ]
 
@@ -164,6 +157,10 @@ function afterOnce<T>(target: any, prop: string, fn: (value: T) => T) {
 
 const isGuild = (label: string) => label === 'guild'
 
+/** DMs and group DMs share the sheet key but have no channel permissions. */
+const isGuildChannel = (channelId: unknown) =>
+	typeof channelId === 'string' && Boolean(getChannel(channelId)?.guild_id)
+
 function applyRows(
 	module: any,
 	props: any,
@@ -220,6 +217,9 @@ export default function patchActionSheets(
 						? 'channel'
 						: null
 				if (!label) {
+					return args
+				}
+				if (!isGuild(label) && !isGuildChannel(props?.channelId)) {
 					return args
 				}
 
