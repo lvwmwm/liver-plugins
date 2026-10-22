@@ -7,11 +7,13 @@ import {
 	getCopyIdIcon,
 	getCopyImageIcon,
 	getCopyNameIcon,
+	getMemberIcon,
 	getPermissionsIcon,
 	hapticMenuOpen,
 } from '../lib/client'
 import { openSheet, roleKey } from '../lib/navigation'
 import { reportError } from '../lib/report'
+import { openRoleMembers } from '../lib/roleMembers'
 import { roleColorText } from '../lib/roles'
 import { RolePermissionsSheet } from './roleScreens'
 import type { ComponentProps, FC } from 'react'
@@ -90,6 +92,18 @@ function pillItems(role: Role, guildId: string | undefined) {
 					},
 					'stack',
 				),
+		})
+
+		items.push({
+			label: 'View Members',
+			IconComponent: getMemberIcon(),
+			action: () => {
+				if (!openRoleMembers(guildId, role.id)) {
+					reportError(
+						`The role member sheet was not available for ${role.id}, try again later.`,
+					)
+				}
+			},
 		})
 	}
 
