@@ -12,13 +12,26 @@
       ],
       "icon": "ShieldUserIcon",
       "channels": {
-        "latest": "1.0.0"
+        "latest": "1.0.1"
       },
       "versions": {
         "1.0.0": {
           "url": "https://lvwmwm.github.io/liver-plugins/pool/liver.permission-viewer@1.0.0.zip",
           "sha256": "8d4f57fb40d91b8a604301959a11a189c83cdbf9d54082c7f78aa193f2bf4c17",
           "size": 8366,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.1": {
+          "url": "https://lvwmwm.github.io/liver-plugins/pool/liver.permission-viewer@1.0.1.zip",
+          "sha256": "389b9a862ce1e07b9bd841f37c0dd6720b0fb0495d0d6ce4479b6989c3dd9408",
+          "size": 8386,
           "dependencies": {
             "revenge.api": {
               "version": ">=1 <2"
