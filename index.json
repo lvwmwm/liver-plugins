@@ -12,7 +12,7 @@
       ],
       "icon": "ShieldUserIcon",
       "channels": {
-        "latest": "1.0.2"
+        "latest": "1.0.4"
       },
       "versions": {
         "1.0.0": {
@@ -45,6 +45,19 @@
           "url": "https://lvwmwm.github.io/liver-plugins/pool/liver.permission-viewer@1.0.2.zip",
           "sha256": "cfaf215bedfb05cbf6a7186a716110ce8ce6710baa17cf9ac175f28b7c00247d",
           "size": 8370,
+          "dependencies": {
+            "revenge.api": {
+              "version": ">=1 <2"
+            },
+            "discord": {
+              "version": "*"
+            }
+          }
+        },
+        "1.0.4": {
+          "url": "https://lvwmwm.github.io/liver-plugins/pool/liver.permission-viewer@1.0.4.zip",
+          "sha256": "97d6ea70555804bfe512238a6c7b84b60a401fae0e48d8f09c39c93b719264e0",
+          "size": 8828,
           "dependencies": {
             "revenge.api": {
               "version": ">=1 <2"
