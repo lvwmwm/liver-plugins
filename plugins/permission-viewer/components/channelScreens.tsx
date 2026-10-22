@@ -97,7 +97,7 @@ export function ChannelPermissionsSheet({
 				subjectId: overwrite.id,
 				type: overwrite.type,
 			},
-			'replaceTopSheet',
+			'stack',
 		)
 
 	// Role order is a position lookup, not a sort key.

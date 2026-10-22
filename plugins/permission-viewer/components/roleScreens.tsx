@@ -89,7 +89,7 @@ export function RoleListSheet({ guildId }: RoleSheetProps) {
 	return (
 		<PermissionSheet title="Roles">
 			{roles.length ? (
-				<RoleList guildId={guildId} roles={roles} stacking="replaceTopSheet" />
+				<RoleList guildId={guildId} roles={roles} stacking="stack" />
 			) : (
 				<EmptyState title="This server has no roles." />
 			)}

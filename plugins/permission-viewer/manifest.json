@@ -6,7 +6,7 @@
 	"author": "Livie <755950362342457384>",
 	"contributors": ["tralwdwdd"],
 	"icon": "ShieldUserIcon",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"dependencies": {
 		"revenge.api": {
 			"version": ">=1 <2"
