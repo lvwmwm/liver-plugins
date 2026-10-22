@@ -8,6 +8,7 @@ import {
 import { initPermissions } from './lib/permissions'
 import { reportError, setReporter } from './lib/report'
 import { resolveRoleItem } from './lib/roleItem'
+import { resolveRoleMembersSheet } from './lib/roleMembers'
 import { registerRoutes } from './lib/routes'
 import { resolveUserActions } from './lib/stores'
 import patchActionSheets from './patches/sheets'
@@ -37,6 +38,7 @@ export default plugin({
 			() => resolveRoleSort(cleanup),
 			() => resolveHttp(cleanup),
 			() => resolveUserActions(cleanup),
+			() => resolveRoleMembersSheet(),
 			() => resolveUserUi(cleanup),
 			() => resolveRoleIcon(cleanup),
 			() => resolveHaptics(cleanup),

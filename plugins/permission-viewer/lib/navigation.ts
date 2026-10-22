@@ -49,6 +49,10 @@ export function roleKey(guildId: string, roleId: string) {
 	return `${prefix}-role-${guildId}-${roleId}`
 }
 
+export function roleMembersKey(guildId: string, roleId: string) {
+	return `${prefix}-role-members-${guildId}-${roleId}`
+}
+
 export function userKey(guildId: string, userId: string) {
 	return `${prefix}-user-${guildId}-${userId}`
 }
