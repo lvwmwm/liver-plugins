@@ -29,7 +29,7 @@ export function replaceProfileRolesList(
 		})
 	}
 
-	if (!isValidElement(node)) return node
+	if (!isValidElement<{ children?: ReactNode }>(node)) return node
 
 	const children = (node.props as { children?: ReactNode })?.children
 	if (children === undefined || children === null) return node

@@ -4,7 +4,7 @@ import { createElement } from 'react'
 import { RoleItemWithMenu } from '../components/rolePill'
 import { replaceProfileRolesList } from './profileRoles'
 import { reportError } from './report'
-import type { ComponentType } from 'react'
+import type { ReactNode } from 'react'
 import type { RoleItemComponent } from '../components/rolePill'
 
 /**
@@ -14,10 +14,11 @@ import type { RoleItemComponent } from '../components/rolePill'
 const ROLE_PILL_PATH = 'modules/user_profile/native/UserProfileRolesCard.tsx'
 
 type ProfileCardProps = { guildId: string; style?: unknown }
+type ProfileCard = (props: ProfileCardProps) => ReactNode
 
 type RoleItemModule = {
 	RoleItem: RoleItemComponent
-	default: ComponentType<ProfileCardProps>
+	default: ProfileCard
 }
 
 let roleItem: RoleItemComponent | undefined

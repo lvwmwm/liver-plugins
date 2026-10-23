@@ -4,15 +4,20 @@ import { EmptyState } from '../components/common'
 import { RoleList } from '../components/roleScreens'
 import { readHandoff } from '../lib/navigation'
 import { getSortedRoles } from '../lib/stores'
+import type { StackScreenProps } from '@react-navigation/stack'
+import type { ReactNavigationParamList } from '@revenge-mod/externals/react-navigation'
 
-interface GuildRolesPageProps {
+type GuildRolesPageProps = Partial<
+	StackScreenProps<ReactNavigationParamList>
+> & {
 	guildId?: string
 }
 
 /** Guild roles on a pushed page; a sheet caps at half the screen. */
 export function GuildRolesPage(props: GuildRolesPageProps) {
 	// Params can be dropped on push; the handoff is reliable.
-	const guildId = props?.guildId ?? readHandoff().guildId
+	const guildId =
+		props?.guildId ?? props?.route?.params?.guildId ?? readHandoff().guildId
 
 	if (typeof guildId !== 'string') {
 		return (
